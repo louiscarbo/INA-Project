@@ -8,10 +8,13 @@ import paho.mqtt.client as mqtt
 BROKER = "test.mosquitto.org"
 PORT = 1883
 
-TOPIC = "inaupv/testscript"
+TOPIC = "upvina/testscript"
 
-USERNAME = "bot"
-PASSWORD = "bot"
+USERNAME = ""
+PASSWORD = ""
+
+# USERNAME = "bot"
+# PASSWORD = "bot"
 # PASSWORD = "pSRq9tHGYh86m5HqxZA2"
 
 
