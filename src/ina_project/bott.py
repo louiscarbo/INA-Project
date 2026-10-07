@@ -10,15 +10,21 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Echo: {update.message.text}"
     )
 
+async def unknown_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "Unknown command."
+    )
+
 app = None
 
 def main(handler=None):
     global app
     app = Application.builder().token(BOT_TOKEN).build()
 
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
     for h in handler:
         app.add_handler(CommandHandler(h[0], h[1]))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, unknown_command))
+    app.add_handler(MessageHandler(filters.COMMAND, unknown_command))
 
     print("Bot is running...")
     app.run_polling()

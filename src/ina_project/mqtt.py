@@ -12,6 +12,8 @@ TEMP_TOPIC = "upvina/humtemp/status/temperature:0"
 HUM_TOPIC = "upvina/humtemp/status/humidity:0"
 BOT_TOPIC = "upvina/humtemp/bot/status"
 
+SWITCH_TOPIC = "upvina/shellyMiniGen3/command/switch:0"
+
 USERNAME = ""
 PASSWORD = ""
 
@@ -56,6 +58,11 @@ def shutdown_mqtt():
     client.loop_stop()
     client.disconnect()
 
+def send_message(topic, message, wait_for_publish=False):
+    global client
+    msg = client.publish(topic, message)
+    if wait_for_publish:
+        msg.wait_for_publish(5)
 
 def default_on_message(client, userdata, msg):
     payload = msg.payload.decode()

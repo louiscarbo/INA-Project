@@ -75,7 +75,7 @@
     header: context {
         set text(text-size-template)
         grid(
-          columns: (40%, 20%, 40%),
+          columns: (20%,60%, 20%),
           align(left)[
             #doc-type
           ],
@@ -101,7 +101,7 @@
             #authors #date.display("[year]")\
             Version #version
           ] else [
-            #authors
+            // #authors
           ]
           
         ],
