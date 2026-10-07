@@ -15,9 +15,9 @@
   columns: (auto, auto),
   align: (left, left),
   stroke: none,
-  [Mattis Negraszus], [PL73K2HKC3],
-  [Elise], [abcd],
-  [Louis], [abcd],
+  [Mattis Negraszus], [],
+  [Elise Bachet], [],
+  [Louis Carbo], [],
 )
 
 #show: hm-template.with(
