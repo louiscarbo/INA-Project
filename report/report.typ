@@ -70,7 +70,7 @@
 
 The developed system combines a Shelly Humidity & Temperature Wi-Fi sensor with a Telegram bot in order to issue automated warnings and allow remote readouts. Additionally, a temperature range can be set at which a fan is automatically turned on.
 
-The bot is reachable under https://t.me/ina_temp_bot.
+The bot is reachable under https://t.me/ina_temp_bot and a demo interaction is shown in @f-demo.
 
 As the sensor is battery powered and Wi-Fi is ideally used with a constant connection to power, the sensor only wakes up about once every two hours to refresh its data to mqtt and fetch instructions from the shelly control panel.
 The sensor is configured such that it publishes its data to the example.mosquitto.org server under the /upvina/humtemp topic.
@@ -130,3 +130,8 @@ It accepts commands to upvina/shellyMiniGen3/command/switch:0 with payloads "on"
 The command /set_fan_range requires two numbers as paramers, otherwise a respective error message with syntax clarification is returned. The first number sets the lower bound and the second number the upper bound on the temperature range at which the fan is automatically turned on. If the temperature is outside the range, the fan is turned off.
 
 Using /get_fan_range returns the currently set range and /get_fan_state additionally calculates the current on or off position with regards to the last known temperature.
+
+#figure(
+  image("demo.png", width:10cm),
+  caption: "Demo interaction with the telegram bot."
+)<f-demo>

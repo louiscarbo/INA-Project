@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import ina_project.bott as bott
 from telegram import *
 from ina_project.mqtt import *
@@ -16,11 +18,13 @@ fan_range = None
 def tempUpdate(temp):
     global lastKnownTemp
     lastKnownTemp = temp
+    global lastUpdate
     lastUpdate = time.time()
 
 def humUpdate(hum):
     global lastKnownHum
     lastKnownHum = hum
+    global lastUpdate
     lastUpdate = time.time()
 
 def checkalarm():
@@ -161,7 +165,7 @@ async def status(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Last known humidity: " + str(queryHum()) + " %\n" +
         "Alarm temperature: " + str(alarmTemp.get(update.effective_chat.id, "Not set")) + " °C\n" +
         "Alarm enabled: " + str(alarmEnabled.get(update.effective_chat.id, False)) + "\n" +
-        "Last update: " + str(lastUpdate) + "\n"
+        "Last update: " + datetime.fromtimestamp(lastUpdate).strftime("%d.%m.%Y %H:%M:%S") + "\n"
     )
 
 async def set_fan_range(update: Update, context: ContextTypes.DEFAULT_TYPE):
